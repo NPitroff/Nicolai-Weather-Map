@@ -39,15 +39,23 @@ $("#weatherBtn").on("click", function weather() {
 //FUNCTION TO APPEND THE CURRENT DAYS WEATHER DATA
 function currentWeatherData(response){
   console.log(response)
-  var dayWeatherDiv = $("#todayWeather").html("<div class='todaysWeather'>");
+  // var dayWeatherDiv = $("#todayWeather").html("<div class='todaysWeather'>");
   var searchName = response.city.name;
   var todaysDate = response.list[0].dt_txt;
+  //OPEN WEATHER ICON LOCATION
   var weatherIcon = response.list[0].weather[0].icon; 
   var todaysTemp = response.list[0].main.temp;
   var todaysHumidity = response.list[0].main.humidity;
   var todaysWindSpeed = response.list[0].wind.speed;  
-
-   dayWeatherDiv.append(searchName, todaysDate, weatherIcon, todaysTemp, todaysHumidity, todaysWindSpeed, );
+  //OPEN WEATHER ICON URL
+  var iconURL = "http://openweathermap.org/img/w/" + weatherIcon + ".png";
+   
+   $("#city").append(searchName);
+   $("#date").append(todaysDate);
+   $("#icon").attr('src', iconURL);
+   $("#temp").append("Current Tempurature: "+ todaysTemp+ " Degrees Fahrenheit");
+   $("#humid").append("Current Humidity is "+todaysHumidity+"%");
+   $("#speed").append("With a wind speed of "+todaysWindSpeed+"mph");
 }
 
 function getUVIndex(lat, lon) {
