@@ -2,17 +2,20 @@ var apiKey = "6d0e27a1bde81971c768423d4c6f86f7";
 var weatherURL = "http://api.openweathermap.org/data/2.5/forecast?q=";
 var cityName = $("#cityName").val();
 
+// RETRIEVING THE ARRAY OF INFORMATION FROM THE WEATHER API
 $("#weatherBtn").on("click", function weather() {
   cityName = $("#cityName").val().toLowerCase();
   console.log(weatherURL + cityName + "&appid=" + apiKey);
   $.ajax({
     type: "GET",
-    url: weatherURL + cityName + "&appid=" + apiKey,
+    url: weatherURL + cityName + "&units=imperial" + "&appid=" + apiKey,
     success: function (result) {
       console.log("The Request was successfull", result);
       var lattitude = result.city.coord.lat;
       var longitude = result.city.coord.lon;
       getUVIndex(lattitude, longitude);
+      //APPENDING A DIV TO THE WEBSITE THAT CONTAINS THE WEATHER
+      currentWeatherData(result);
 
       //   RETRIEVING THE LAST SEARCHED CITIES, IF NULL, ASSIGN A BLANK ARRAY
       var historyList = JSON.parse(localStorage.getItem("cityList")) || [];
@@ -32,6 +35,20 @@ $("#weatherBtn").on("click", function weather() {
     },
   });
 });
+
+//FUNCTION TO APPEND THE CURRENT DAYS WEATHER DATA
+function currentWeatherData(response){
+  console.log(response)
+  var dayWeatherDiv = $("#todayWeather").html("<div class='todaysWeather'>");
+  var searchName = response.city.name;
+  var todaysDate = response.list[0].dt_txt;
+  var weatherIcon = response.list[0].weather[0].icon; 
+  var todaysTemp = response.list[0].main.temp;
+  var todaysHumidity = response.list[0].main.humidity;
+  var todaysWindSpeed = response.list[0].wind.speed;  
+
+   dayWeatherDiv.append(searchName, todaysDate, weatherIcon, todaysTemp, todaysHumidity, todaysWindSpeed, );
+}
 
 function getUVIndex(lat, lon) {
   $.ajax({
