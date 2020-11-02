@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather</title>
+    <link rel="stylesheet" type="text/css" href="document.css">
+    
+</head>
+<body>
+    <!-- This is the Landing page for the app -->
+    <section class="top-banner">
+        <div class="container">
+            <h1 class="heading">Nicolai's Weather App</h1>
+            <!-- This is the form that holds the search field, button, and msg display -->
+            <form>
+                <input type="text" placeholder="City Search" id="cityName">
+                <div type="submit" id="weatherBtn">FIND THIS CITY</div>
+                <span class="msg"></span>
+            </form>
+        </div>
+    </section>
+    <!-- This is the section that holds the data from the ajax function -->
+    <section class="ajax-section">
+        <div class="container">
+            <ul id="searched-cities"></ul>
+        </div>
+    </section>
+    <!-- Here is the 'MADE BY' footer section -->
+    <footer class="page-footer">
+        <div class="container">
+            <h5>This site was made by Nicolai</h5>
+        </div>
+    </footer>
+
+
+
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="script.js"></script>  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>
