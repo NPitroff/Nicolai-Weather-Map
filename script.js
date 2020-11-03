@@ -16,6 +16,7 @@ $("#weatherBtn").on("click", function weather() {
        getUVIndex(lattitude, longitude);
       //APPENDING A DIV TO THE WEBSITE THAT CONTAINS THE WEATHER
       currentWeatherData(result);
+      dayOneWeatherData(result);
 
       //   RETRIEVING THE LAST SEARCHED CITIES, IF NULL, ASSIGN A BLANK ARRAY
       var historyList = JSON.parse(localStorage.getItem("cityList")) || [];
@@ -39,7 +40,7 @@ $("#weatherBtn").on("click", function weather() {
 //FUNCTION TO APPEND THE CURRENT DAYS WEATHER DATA
 function currentWeatherData(response){
   console.log(response)
-  // var dayWeatherDiv = $("#todayWeather").html("<div class='todaysWeather'>");
+  
   var searchName = response.city.name;
   var todaysDate = response.list[0].dt_txt;
   //OPEN WEATHER ICON LOCATION
@@ -49,7 +50,7 @@ function currentWeatherData(response){
   var todaysWindSpeed = response.list[0].wind.speed;  
   //OPEN WEATHER ICON URL
   var iconURL = "http://openweathermap.org/img/w/" + weatherIcon + ".png";
-   
+  //  COMMANDS TO APPEND TO THE CURRENT DAYS WEATHER
    $("#city").html(searchName);
    $("#date").html(todaysDate);
    $("#icon").attr('src', iconURL);
@@ -57,6 +58,20 @@ function currentWeatherData(response){
    $("#humid").html("Current Humidity is "+todaysHumidity+"%");
    $("#speed").html("With a wind speed of "+todaysWindSpeed+"mph");
    
+}
+
+function dayOneWeatherData(response){
+  console.log(response);
+  var dateOne = response.list[1].dt_txt;
+  var weatherIconOne = response.list[1].weather[0].icon;
+  var tempOne = response.list[1].main.temp;
+  var humidOne = response.list[1].main.humidity;
+  var iconURL = "http://openweathermap.org/img/w/" + weatherIconOne + ".png";
+
+  $("#dateOne").html("On "+dateOne);
+  $("#iconOne").attr('src',iconURL);
+  $("#tempOne").html(tempOne+" Degrees Fahrenheit");
+  $("#humidOne").html(humidOne+"%");
 }
 
 function getUVIndex(lat, lon) {
