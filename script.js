@@ -120,10 +120,10 @@ function dayFourWeatherData(response){
 }
 //FUNCTION TO LOAD DAY FIVE DATA
 function dayFiveWeatherData(response){
-  var dateFive = response.list[40].dt_txt;
-  var weatherIconFive = response.list[40].weather[0].icon;
-  var tempFive = response.list[40].main.temp;
-  var humidFive = response.list[40].main.humidity;
+  var dateFive = response.list[39].dt_txt;
+  var weatherIconFive = response.list[39].weather[0].icon;
+  var tempFive = response.list[39].main.temp;
+  var humidFive = response.list[39].main.humidity;
   var iconURL = "http://openweathermap.org/img/w/" + weatherIconFive + ".png";
 
   $("#dateFive").html("On "+dateFive);
@@ -146,7 +146,14 @@ function getUVIndex(lat, lon) {
       console.log("UV Result", uvResult);
       var uvValue = uvResult.value;
       $("#uv").html("UV index is: "+uvValue);
-      //   IF ELSE CONDITION BASED ON THE UV RESULT.VALUE ie "If (uvReult.value < 3) {background color:green}"
+      //IF STATEMENT TO CHANGE THE BACKGROUND COLOR OF THE UV DIV
+       if (uvValue <= 2.9){
+        document.getElementById("uv").style.backgroundColor= '#009900';
+      }else if(uvValue <= 7.9){
+        document.getElementById("uv").style.backgroundColor = '#ffff00';
+      }else{
+        document.getElementById("uv").style.backgroundColor = '#ff9900';
+      }
     },
   });
 }
