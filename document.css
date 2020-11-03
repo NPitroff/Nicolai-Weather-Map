@@ -1,0 +1,15 @@
+.heading{
+    text-align: center;
+}
+
+form{
+    display: block;
+    float: right;
+    margin: 0 auto;
+}
+
+#cityName{
+    width:100px;
+    height: auto;
+
+}
