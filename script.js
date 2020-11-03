@@ -13,7 +13,7 @@ $("#weatherBtn").on("click", function weather() {
       console.log("The Request was successfull", result);
       var lattitude = result.city.coord.lat;
       var longitude = result.city.coord.lon;
-      getUVIndex(lattitude, longitude);
+       getUVIndex(lattitude, longitude);
       //APPENDING A DIV TO THE WEBSITE THAT CONTAINS THE WEATHER
       currentWeatherData(result);
 
@@ -50,12 +50,13 @@ function currentWeatherData(response){
   //OPEN WEATHER ICON URL
   var iconURL = "http://openweathermap.org/img/w/" + weatherIcon + ".png";
    
-   $("#city").append(searchName);
-   $("#date").append(todaysDate);
+   $("#city").html(searchName);
+   $("#date").html(todaysDate);
    $("#icon").attr('src', iconURL);
-   $("#temp").append("Current Tempurature: "+ todaysTemp+ " Degrees Fahrenheit");
-   $("#humid").append("Current Humidity is "+todaysHumidity+"%");
-   $("#speed").append("With a wind speed of "+todaysWindSpeed+"mph");
+   $("#temp").html("Current Tempurature: "+ todaysTemp+ " Degrees Fahrenheit");
+   $("#humid").html("Current Humidity is "+todaysHumidity+"%");
+   $("#speed").html("With a wind speed of "+todaysWindSpeed+"mph");
+   
 }
 
 function getUVIndex(lat, lon) {
@@ -70,9 +71,13 @@ function getUVIndex(lat, lon) {
       apiKey,
     success: function (uvResult) {
       console.log("UV Result", uvResult);
+      var uvValue = uvResult.value;
+      $("#uv").html("UV index is: "+uvValue);
       //   IF ELSE CONDITION BASED ON THE UV RESULT.VALUE ie "If (uvReult.value < 3) {background color:green}"
     },
   });
 }
+
+
 
 
