@@ -13,3 +13,8 @@ form{
     height: auto;
 
 }
+
+.weatherIcon{
+    border-style: outset;
+    width: 12.5em;
+}
