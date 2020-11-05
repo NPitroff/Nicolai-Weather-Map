@@ -16,5 +16,11 @@ form{
 
 .weatherIcon{
     border-style: outset;
-    width: 12.5em;
+    width: 8.5em;
+}
+
+.weekWeather{
+    display:block;
+    float: left;
+    width: 15em;
 }
