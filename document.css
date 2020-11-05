@@ -2,16 +2,24 @@
     text-align: center;
 }
 
-form{
-    display: block;
-    float: right;
+form{    
     margin: 0 auto;
+    width:250px;
+    border-radius: 1.5625em;
 }
 
+#weatherBtn{
+    background-color: aqua;
+    width: 7.5em;
+    border-radius: 1.5625em;
+    text-align: center;
+    font-family: fantasy;
+    
+}
 #cityName{
-    width:100px;
+    width:7.5em;
     height: auto;
-
+    border-radius: 1.5625em;
 }
 
 .weatherIcon{
@@ -23,4 +31,9 @@ form{
     display:block;
     float: left;
     width: 15em;
+}
+#cityList{
+position: absolute;
+    top: 12.5em;
+    left: 68.75em;
 }

@@ -13,14 +13,17 @@
     <section class="top-banner">
         <div class="jumbotron">
             <h1 class="heading">Nicolai's Weather App</h1>
-            <!-- This is the form that holds the search field, button, and msg display -->
-            <form>
-                <input type="text" placeholder="City Search" id="cityName">
-                <div type="submit" id="weatherBtn">FIND THIS CITY</div>
-                <span class="msg"></span>
-            </form>
         </div>
     </section>
+    <div>
+        <!-- This is the form that holds the search field, button, and msg display -->
+        <form>
+            <input type="text" placeholder="City Search" id="cityName">
+            <div type="submit" id="weatherBtn">FIND THIS CITY</div>
+            <span class="msg"></span>
+        </form>
+    </div>
+    <br>
     <!-- SECTION FOR TODAYS WEATHER -->
     <section id="todayWeather">
         <div><h1 id="city"></h1>
@@ -31,7 +34,7 @@
         <p id="speed"></p>
         <p id="uv"></p></div>
     </section>
-    
+    <hr>
     <!-- SECTION FOR THE WEEKS FORECAST -->
     <section id="weeksWeather">
         <!-- DIV FOR FIRST DAY -->
@@ -66,7 +69,7 @@
     </section>
     <!-- This is the section that holds the search history data from the ajax function -->
     <section class="ajax-section">
-        <div class="container">
+        <div class="container" id="cityList">
             <ul id="searched-cities"></ul>
         </div>
     </section>
