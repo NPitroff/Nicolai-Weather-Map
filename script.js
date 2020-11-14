@@ -1,5 +1,5 @@
 var apiKey = "6d0e27a1bde81971c768423d4c6f86f7";
-var weatherURL = "http://api.openweathermap.org/data/2.5/forecast?q=";
+var weatherURL = "https://api.openweathermap.org/data/2.5/forecast?q=";
 var cityName = $("#cityName").val();
 
 // RETRIEVING THE ARRAY OF INFORMATION FROM THE WEATHER API
@@ -34,6 +34,7 @@ $("#weatherBtn").on("click", function weather() {
     //   ADDING VALUES TO THE HISTORY LIST
     var li =$("<li>").text(cityName.toUpperCase())
     $("#searched-cities").append(li);
+    li.attr('id','#weatherBtn')
     },
     error: function (result) {
       console.log("Failed Request");
